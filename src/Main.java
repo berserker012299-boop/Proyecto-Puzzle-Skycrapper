@@ -171,7 +171,7 @@ public class Main {
         return true;
     }
 
-    // ==================== MÉTODO CONTAR VISIBLES ====================
+    //Contar Visibles
     public static int contarVisibles(int[] linea) {
         int visibles = 0;
         int maxAltura = 0;
@@ -186,29 +186,29 @@ public class Main {
         return visibles;
     }
 
-    // ==================== MÉTODO GENERAR PISTAS CORREGIDO ====================
+    //Generacion de pistas corregido
     public static int[][] generarPistas(int size, int[][] sol) {
         int[][] pistas = new int[4][size];
 
         for (int i = 0; i < size; i++) {
-            // 1. Pista IZQUIERDA (fila i normal)
+            //Pista IZQUIERDA (fila i normal)
             pistas[2][i] = contarVisibles(sol[i]);
 
-            // 2. Pista DERECHA (fila i al revés)
+            //Pista DERECHA (fila i al revés)
             int[] filaReversa = new int[size];
             for (int j = 0; j < size; j++) {
                 filaReversa[j] = sol[i][size - 1 - j];
             }
             pistas[3][i] = contarVisibles(filaReversa);
 
-            // 3. Pista ARRIBA (columna i)
+            //Pista ARRIBA (columna i)
             int[] columna = new int[size];
             for (int j = 0; j < size; j++) {
                 columna[j] = sol[j][i];
             }
             pistas[0][i] = contarVisibles(columna);
 
-            // 4. Pista ABAJO (columna i al revés)
+            //Pista ABAJO (columna i al revés)
             int[] columnaReversa = new int[size];
             for (int j = 0; j < size; j++) {
                 columnaReversa[j] = sol[size - 1 - j][i];
